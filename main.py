@@ -12,7 +12,6 @@ def initGame(col, ro):
   print(numGuess)
 
 
-
 def guessFunc():
   global guess, history, rightWrong, historyRW
   history = []
