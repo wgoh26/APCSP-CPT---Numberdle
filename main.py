@@ -42,7 +42,7 @@ def guessFunc():
             rightWrong.append("w")
 
     # If all are right, end the game!
-    if "c" in rightWrong and not "s" in rightWrong and not "w" in rightWrong:
+    if not "s" in rightWrong and not "w" in rightWrong:
       consDisplay("correctGuess")
       break
     else:
@@ -51,8 +51,8 @@ def guessFunc():
 
 
 def consDisplay(varType):
-  tries = 0
-  tries += 1
+  # tries = 0
+  # tries += 1
   columnsEmpty = []
 
   for i in range (columns):
@@ -91,12 +91,16 @@ def consDisplay(varType):
       print("\033[0;0;40m" + "         " + ("").join(columnsEmpty) + "\033[0")
 
 
+# Code has been debugged, the issue was that the space was being appended to the list "comp" too many times.
+
+
 def textColor(index):
     # State variable, store in coparison lists
     comp = []
+    comp.append("         ")
     # Print the number input with the color using conditions and the comparisons in the list
     for i in range(len(history[index])):
-        comp.append("         ")
+        # comp.append("         ")
         if historyRW[index][i] == "c":
             comp.append("\033[0;32;40m " + history[index][i] + "\033[0")
         elif historyRW[index][i] == "s":
