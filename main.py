@@ -93,8 +93,8 @@ def consDisplay(varType):
       print("\033[0;0;40m" + "         " + ("").join(columnsEmpty))
 
 
-# Code has been debugged, the issue was that the space was being appended to the list "comp" too many times
-
+# Code has been debugged, the issue was that the space was being appended to the list "comp" too many times.
+# ASCII text color handler issue resolved.
 
 def textColor(index):
     # State variable, store in coparison lists
