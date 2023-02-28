@@ -70,7 +70,8 @@ def consDisplay(varType):
     #   print("         " + history[i])
         textColor(i)
     for i in range (rows - len(history)):
-      print("\033[0;0;40m" + "         " + ("").join(columnsEmpty) + "\033[0")
+      # print("\033[0;0;40m" + "         " + ("").join(columnsEmpty) + "\033[0")
+      print("\033[0;0;40m" + "         " + ("").join(columnsEmpty))
   # If the param is a correct guess:
   # Display the number and a string of text congratulating the user\
   elif varType == "correctGuess":
@@ -88,10 +89,11 @@ def consDisplay(varType):
     #   print("         " + history[i])
         textColor(i)
     for i in range (rows - len(history)):
-      print("\033[0;0;40m" + "         " + ("").join(columnsEmpty) + "\033[0")
+      # print("\033[0;0;40m" + "         " + ("").join(columnsEmpty) + "\033[0")
+      print("\033[0;0;40m" + "         " + ("").join(columnsEmpty))
 
 
-# Code has been debugged, the issue was that the space was being appended to the list "comp" too many times.
+# Code has been debugged, the issue was that the space was being appended to the list "comp" too many times
 
 
 def textColor(index):
@@ -102,12 +104,16 @@ def textColor(index):
     for i in range(len(history[index])):
         # comp.append("         ")
         if historyRW[index][i] == "c":
-            comp.append("\033[0;32;40m " + history[index][i] + "\033[0")
+            # comp.append("\033[0;32;40m " + history[index][i] + "\033[0")
+            comp.append("\033[0;32;40m " + history[index][i])
         elif historyRW[index][i] == "s":
-            comp.append("\033[0;33;40m " + history[index][i] + "\033[0")
+            # comp.append("\033[0;33;40m " + history[index][i] + "\033[0")
+            comp.append("\033[0;33;40m " + history[index][i])
         elif historyRW[index][i] == "w":
-            comp.append("\033[0;0;40m " + history[index][i] + "\033[0")
+            # comp.append("\033[0;0;40m " + history[index][i] + "\033[0")
+            comp.append("\033[0;0;40m " + history[index][i])
     print(("").join(comp))
+    # print(comp)
 
 initGame(5,6)
 guessFunc()
