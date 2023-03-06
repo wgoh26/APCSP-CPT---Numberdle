@@ -9,8 +9,7 @@ def initGame(col, ro):
   for i in range (columns):
     addNum = random.randint(0,9)
     numGuess.append(str(addNum))
-  print(numGuess)
-
+  consDisplay("init")
 
 
 def guessFunc():
@@ -35,11 +34,10 @@ def guessFunc():
     for i in range(columns):
       if guess[i] == numGuess[i]:
         rightWrong.append("c")
+      elif guess[i] in numGuess:
+          rightWrong.append("s")
       else:
-        if guess[i] in numGuess:
-            rightWrong.append("s")
-        else:
-            rightWrong.append("w")
+          rightWrong.append("w")
 
     # If all are right, end the game!
     if "c" in rightWrong and not "s" in rightWrong and not "w" in rightWrong:
@@ -75,8 +73,14 @@ def consDisplay(varType):
   # Display the number and a string of text congratulating the user\
   elif varType == "correctGuess":
     subprocess.run('clear', shell = True)
+    history.append(guess)
+    historyRW.append(rightWrong)
     print("- - - - - Numberdle - - - - -")
-    print("Congratulation! You guessed the right number!")
+    for i in range (len(history)):
+        textColor(i)
+    for i in range (rows - len(history)):
+      print("\033[0;0;40m" + "         " + ("").join(columnsEmpty))
+    print("\033[0;0;40mCongratulation! You guessed the right number!")
     print((" ").join(guess))
 
   elif varType == "lose":
@@ -89,6 +93,13 @@ def consDisplay(varType):
         textColor(i)
     for i in range (rows - len(history)):
       print("\033[0;0;40m" + "         " + ("").join(columnsEmpty) + "\033[0")
+
+  # Some nice UI for the start of the game :)
+  elif varType == "init":
+    subprocess.run('clear', shell = True)
+    print("- - - - - Numberdle - - - - -")
+    for i in range (rows):
+      print("\033[0;0;40m" + "         " + ("").join(columnsEmpty))
 
 
 def textColor(index):
