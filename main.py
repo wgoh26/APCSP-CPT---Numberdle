@@ -58,29 +58,18 @@ def consDisplay(varType):
   # Check the param, if its a incorrect guess:
   # Take in variables from outside and put it in a list
   # Display the previous guesses and empty boxes
-  if varType == "incorrectGuess":
+  if varType == "incorrectGuess" or varType == "correctGuess" or varType == "lose":
     for i in range (len(history)):
         textColor(i)
     for i in range (rows - len(history)):
       print("\033[0;0;40m" + "         " + ("").join(columnsEmpty))
   # If the param is a correct guess:
   # Display the number and a string of text congratulating the user\
-  elif varType == "correctGuess":
-    for i in range (len(history)):
-        textColor(i)
-    for i in range (rows - len(history)):
-      print("\033[0;0;40m" + "         " + ("").join(columnsEmpty))
-    print("\033[0;0;40mCongratulation! You guessed the right number!")
-    print((" ").join(guess))
-  elif varType == "lose":
-    for i in range (len(history)):
-    #   print("         " + history[i])
-        textColor(i)
-    for i in range (rows - len(history)):
-      print("\033[0;0;40m" + "         " + ("").join(columnsEmpty))
-    for i in range(columns):
-       numGuess[i] = str(numGuess[i])
-    print("\033[0;0;40m The code was: " + ("").join(numGuess))
+    if varType == "correctGuess":
+      print("\033[0;0;40mCongratulation! You guessed the right number!")
+      print((" ").join(guess))
+    elif varType == "lose":
+      print("\033[0;0;40m The code was: " + ("").join(numGuess))
   # Some nice UI for the start of the game :)
   elif varType == "init":
     for i in range (rows):
